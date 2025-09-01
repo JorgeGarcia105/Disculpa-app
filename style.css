@@ -1,0 +1,829 @@
+/* Modo romántico / oscuro */
+.romantico {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+  color: #fff !important;
+}
+.romantico .card {
+  background: rgba(34, 34, 51, 0.98) !important;
+  color: #fff !important;
+  border: 1.5px solid #fff2;
+}
+.romantico .tab-btn.active {
+  color: #f39c12 !important;
+  border-bottom-color: #f39c12 !important;
+}
+.romantico .tab-btn {
+  color: #fff8 !important;
+}
+.romantico .milestone {
+  background: linear-gradient(135deg, #23234b, #3a3a6a);
+  border-left: 4px solid #f39c12;
+}
+.romantico .milestone h3,
+.romantico .memories-text,
+.romantico .carta-amor {
+  color: #f39c12 !important;
+}
+.romantico .carta-amor {
+  background: linear-gradient(135deg, #23234b, #3a3a6a);
+  border: 2px solid #f39c12;
+}
+.romantico .estrella {
+  color: #fff59d !important;
+  text-shadow: 0 0 8px #f39c12, 0 0 16px #fff;
+}
+.romantico .corazones {
+  z-index: 1;
+}
+.romantico .floating-heart {
+  color: #f39c12 !important;
+  text-shadow: 0 0 8px #fff, 0 0 16px #f39c12;
+}
+.romantico #modoRomanticoBtn {
+  background: #23234b !important;
+  color: #f39c12 !important;
+  border: 2px solid #f39c12 !important;
+}
+
+/* Botón modo romántico flotante */
+#modoRomanticoBtn {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 2000;
+  background: #fff;
+  color: #e17055;
+  border: 2px solid #e17055;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5em;
+  box-shadow: 0 2px 8px rgba(225,112,85,0.15);
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, border 0.3s;
+}
+#modoRomanticoBtn:hover {
+  background: #e17055;
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Lluvia de corazones flotantes */
+.floating-heart {
+  position: fixed;
+  bottom: 0;
+  font-size: 1.5rem;
+  animation: floatUp 4s linear forwards;
+  pointer-events: none;
+  z-index: 3000;
+}
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+/* Invitación helado */
+.invitacion-helado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 18px 0 10px 0;
+}
+.emoji-helado {
+  font-size: 2em;
+  margin-bottom: 4px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2d3748;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(45, 55, 72, 0.12), 0 4px 16px rgba(45, 55, 72, 0.08);
+  padding: 48px 32px 40px 32px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+@keyframes fadeIn {
+  0% { transform: scale(0.8) translateY(60px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+h1 {
+  color: #e53e3e;
+  margin-bottom: 24px;
+  font-size: 2.5em;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+#mensaje {
+  color: #4a5568;
+  font-size: 1.2em;
+  margin-bottom: 24px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.invitacion-helado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 32px 0 24px 0;
+  background: linear-gradient(135deg, #fef5e7 0%, #e6fffa 100%);
+  border-radius: 20px;
+  padding: 24px 16px 20px 16px;
+  box-shadow: 0 4px 16px rgba(45, 55, 72, 0.05);
+  border: 1px solid rgba(56, 178, 172, 0.1);
+}
+.emoji-helado {
+  font-size: 3em;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 2px 8px rgba(56, 178, 172, 0.2));
+}
+.invitacion-helado p {
+  color: #38b2ac;
+  font-size: 1.15em;
+  margin: 0;
+  font-weight: 600;
+}
+
+#perdonarBtn {
+  background: linear-gradient(135deg, #38b2ac 0%, #e53e3e 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  padding: 16px 32px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 24px;
+  box-shadow: 0 8px 24px rgba(56, 178, 172, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.025em;
+}
+#perdonarBtn:hover {
+  background: linear-gradient(135deg, #e53e3e 0%, #38b2ac 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(56, 178, 172, 0.35);
+}
+
+#respuesta {
+  margin-top: 28px;
+  font-size: 1.2em;
+  color: #38b2ac;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  animation: aparecerResp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  word-break: break-word;
+  padding: 16px;
+  background: linear-gradient(135deg, #e6fffa 0%, #fef5e7 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(56, 178, 172, 0.2);
+}
+@keyframes aparecerResp {
+  0% { opacity: 0; transform: scale(0.95) translateY(8px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.oculto {
+  display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+  }
+  .card {
+    padding: 32px 20px 28px 20px;
+    border-radius: 20px;
+  }
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  #mensaje {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+  }
+  .invitacion-helado {
+    margin: 24px 0 20px 0;
+    padding: 20px 12px 16px 12px;
+  }
+  .emoji-helado {
+    font-size: 2.5em;
+  }
+  .invitacion-helado p {
+    font-size: 1.05em;
+  }
+  #perdonarBtn {
+    padding: 14px 24px;
+    font-size: 1em;
+    margin-top: 20px;
+  }
+  #respuesta {
+    font-size: 1.1em;
+    margin-top: 24px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 24px 16px 20px 16px;
+    margin: 8px;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+  #mensaje {
+    font-size: 1em;
+    line-height: 1.6;
+  }
+  .invitacion-helado {
+    padding: 16px 10px 12px 10px;
+  }
+  .emoji-helado {
+    font-size: 2.2em;
+  }
+  #perdonarBtn {
+    padding: 12px 20px;
+    font-size: 0.95em;
+  }
+}
+
+/* Tipografía y contenedores */
+body, button, input, textarea {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#mensaje {
+  color: #636e72;
+  font-size: 1.15em;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+#perdonarBtn {
+  background: linear-gradient(90deg, #43c6ac, #f8ffae);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 14px 36px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(67,198,172,0.15);
+  transition: background 0.3s, transform 0.2s;
+}
+
+#perdonarBtn:hover {
+  background: linear-gradient(90deg, #f8ffae, #43c6ac);
+  transform: scale(1.07);
+}
+
+#respuesta {
+  margin-top: 32px;
+  font-size: 1.3em;
+  color: #00b894;
+  animation: corazoncito 1.2s infinite alternate;
+}
+
+@keyframes corazoncito {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.oculto {
+  display: none;
+}
+
+.contador-dias {
+  margin: 18px 0 10px 0;
+  font-size: 1.05em;
+  color: #636e72;
+}
+
+.frase-romantica {
+  margin: 18px 0 18px 0;
+  font-size: 1.1em;
+  color: #e17055;
+  font-style: italic;
+  min-height: 32px;
+}
+
+.galeria {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 18px 0;
+  flex-wrap: wrap;
+}
+.galeria img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(67,198,172,0.12);
+  border: 2px solid #f8ffae;
+  transition: transform 0.2s;
+}
+.galeria img:hover {
+  transform: scale(1.08) rotate(-2deg);
+  border-color: #43c6ac;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.lightbox::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: -1;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+}
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: transparent;
+  color: #fff;
+  font-size: 1.4em;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.2s;
+}
+
+.oculto .lightbox-close {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+.lightbox-caption {
+  color: #fff;
+  margin-top: 12px;
+  font-size: 1em;
+}
+
+/* Confetti placeholder */
+#confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.poema {
+  background: #f8ffae44;
+  border-radius: 14px;
+  padding: 12px 10px 8px 10px;
+  margin: 18px 0;
+  color: #636e72;
+  font-size: 1.05em;
+}
+.poema h2 {
+  color: #43c6ac;
+  margin: 0 0 6px 0;
+  font-size: 1.1em;
+}
+
+.respuesta-novia {
+  margin: 22px 0 10px 0;
+}
+#respuestaNovia {
+  width: 90%;
+  min-height: 48px;
+  border-radius: 10px;
+  border: 1px solid #43c6ac;
+  padding: 8px;
+  font-size: 1em;
+  resize: vertical;
+}
+
+.whatsapp-btn {
+  display: inline-block;
+  margin-top: 18px;
+  background: #25d366;
+  color: #fff;
+  padding: 10px 28px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 2px 8px rgba(37,211,102,0.15);
+  transition: background 0.2s, transform 0.2s;
+}
+.whatsapp-btn:hover {
+  background: #128c7e;
+  transform: scale(1.07);
+}
+
+.music-btn {
+  background: linear-gradient(90deg, #f8ffae, #43c6ac);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 28px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(67,198,172,0.15);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.music-btn:hover {
+  background: linear-gradient(90deg, #43c6ac, #f8ffae);
+  transform: scale(1.07);
+}
+
+.music-control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+.music-control select, .music-control input {
+  width: 90%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #43c6ac;
+}
+.music-control .or {
+  font-size: 0.9em;
+  color: #636e72;
+}
+.note {
+  font-size: 0.8em;
+  color: #555;
+  margin-top: 10px;
+}
+
+.corazones {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+.corazon {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: url('data:image/svg+xml;utf8,<svg fill="%23e17055" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M23.6 3.6c-2.6 0-4.9 1.5-6.1 3.7C15.3 5.1 13 3.6 10.4 3.6 6.1 3.6 2.7 7 2.7 11.3c0 7.1 11.2 15.1 11.7 15.4.3.2.7.2 1 0 .5-.3 11.7-8.3 11.7-15.4 0-4.3-3.4-7.7-7.7-7.7z"/></svg>') no-repeat center/contain;
+  opacity: 0.7;
+  animation: flotar 6s linear infinite;
+}
+@keyframes flotar {
+  0% { transform: translateY(100vh) scale(0.7) rotate(0deg); opacity: 0.7; }
+  80% { opacity: 0.9; }
+  100% { transform: translateY(-10vh) scale(1.1) rotate(30deg); opacity: 0; }
+}
+
+/* Estilos para pestañas */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 0.9em;
+  color: #636e72;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.tab-btn.active {
+  color: #43c6ac;
+  border-bottom-color: #43c6ac;
+}
+
+.tab-btn:hover {
+  color: #e17055;
+}
+
+.tab-content {
+  display: none;
+  padding: 20px 0;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Nuevos estilos románticos */
+.estrellas {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.estrella {
+  color: #f39c12;
+  font-size: 1.5em;
+  margin: 0 3px;
+  animation: brillar 2s infinite alternate;
+}
+
+@keyframes brillar {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
+.memories-text {
+  margin-top: 20px;
+  font-style: italic;
+  color: #e17055;
+  font-size: 1.1em;
+}
+
+.milestone {
+  margin: 20px 0;
+  padding: 15px;
+  background: linear-gradient(135deg, #fff5f5, #ffe0e6);
+  border-radius: 15px;
+  border-left: 4px solid #e17055;
+}
+
+.milestone h3 {
+  color: #e17055;
+  margin-bottom: 10px;
+}
+
+.milestone-item {
+  margin: 8px 0;
+  padding: 8px;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 0.95em;
+  color: #636e72;
+}
+
+.carta-amor {
+  background: linear-gradient(135deg, #fff9e6, #fff5f5);
+  border-radius: 15px;
+  padding: 25px;
+  border: 2px solid #f8ffae;
+  box-shadow: 0 4px 15px rgba(241,196,15,0.1);
+}
+
+.carta-contenido {
+  line-height: 1.6;
+  color: #636e72;
+  font-size: 1.05em;
+}
+
+.carta-contenido p {
+  margin-bottom: 15px;
+}
+
+.surprise-btn {
+  background: linear-gradient(90deg, #e17055, #f39c12);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 28px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px;
+  box-shadow: 0 2px 8px rgba(225,112,85,0.15);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.surprise-btn:hover {
+  background: linear-gradient(90deg, #f39c12, #e17055);
+  transform: scale(1.07);
+}
+
+/* Estilos de bienvenida */
+.bienvenida-modal {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(30, 20, 40, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1s;
+}
+
+.bienvenida-contenido {
+  background: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 95vw;
+  width: 400px;
+  text-align: center;
+  position: relative;
+  animation: popIn 1s;
+}
+
+.bienvenida-contenido h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #e75480;
+  letter-spacing: 1px;
+}
+
+.bienvenida-contenido p {
+  font-size: 1.15rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.bienvenida-corazones {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.5rem;
+  animation: corazonesDance 2s infinite alternate;
+}
+
+@keyframes corazonesDance {
+  0% { transform: translateY(0);}
+  100% { transform: translateY(-10px);}
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0;}
+  100% { transform: scale(1); opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+
+/* Oculta el contenido principal mientras la bienvenida está activa */
+body.modal-abierto #app,
+body.modal-abierto #modoRomanticoBtn,
+body.modal-abierto #cuentaRegresiva {
+  filter: blur(6px) grayscale(0.3);
+  pointer-events: none;
+  user-select: none;
+}
+body.modal-abierto .bienvenida-modal {
+  display: flex;
+}
+
+/* SORPRESA MODAL */
+.sorpresa-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(30,30,50,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.sorpresa-contenido {
+  background: #fff;
+  color: #222;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  max-width: 90vw;
+  width: 350px;
+  text-align: center;
+  position: relative;
+  animation: popIn 0.7s;
+}
+.romantico .sorpresa-contenido {
+  background: #23234a;
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+}
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.guia-contenido {
+  background: #fff;
+  color: #222;
+  border-radius: 1.2rem;
+  padding: 1.5rem 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+/* Modo romántico/oscuro para la guía */
+.romantico .guia-contenido {
+  background: #23234a;
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+
+.confetti {
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@keyframes confetti-fall {
+  0% {
+    opacity: 0.9;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(60vh) scale(1.1) rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(90vh) scale(0.8) rotate(360deg);
+  }
+}
+.animar-pop {
+  animation: popIn 0.7s cubic-bezier(.62,.28,.23,.99);
+}
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animar-bounce {
+  animation: bounceIn 1.2s;
+}
+@keyframes bounceIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animar-corazon {
+  animation: latido 1.2s infinite;
+  display: inline-block;
+}
+@keyframes latido {
+  0%, 100% { transform: scale(1);}
+  20% { transform: scale(1.2);}
+  40% { transform: scale(0.95);}
+  60% { transform: scale(1.1);}
+  80% { transform: scale(0.98);}
+}
+.animar-btn {
+  transition: transform 0.15s;
+}
+.animar-btn:active {
+  transform: scale(0.93);
+}
+.carta-dia {
+  text-align: center;
+  padding: 1.2rem 0.5rem;
+}
+.carta-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.carta-texto {
+  font-size: 1.15rem;
+  color: #e75480;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+.romantico .carta-texto {
+  color: #ffb6c1;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Una carta y experiencia interactiva para pedir perdón con cariño: poemas, recuerdos, sorpresas y más.">
+  <title>Disculpa Interactiva</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ventana de bienvenida creativa -->
+  <div id="bienvenida" class="bienvenida-modal" role="dialog" aria-modal="true" aria-labelledby="bienvenidaTitulo" aria-describedby="bienvenidaTexto">
+    <div class="bienvenida-contenido">
+      <h2 id="bienvenidaTitulo">🌟 ¡Hola! 🌟</h2>
+      <p id="bienvenidaTexto">
+        Antes de comenzar este viaje de emociones, quiero darte la bienvenida a este pequeño rincón hecho solo para ti.<br>
+        Aquí encontrarás palabras sinceras, promesas y alguna que otra sorpresa.<br><br>
+        ¿Estás lista para descubrirlo? 💖
+      </p>
+      <button id="empezarBtn" class="big-btn" aria-label="Empezar la experiencia">¡Empezar!</button>
+      <div class="bienvenida-corazones" aria-hidden="true">
+        <span>💖</span><span>✨</span><span>💫</span><span>🌸</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="corazones" aria-hidden="true"></div>
+  <div class="container">
+    <div class="card" id="app">
+      
+      <nav class="tabs" role="tablist" aria-label="Secciones principales">
+        <button class="tab-btn" data-tab="guia" role="tab" aria-selected="false" aria-controls="guia">Guía</button>
+        <button class="tab-btn active" data-tab="disculpa" role="tab" aria-selected="true" aria-controls="disculpa">Disculpa</button>
+        <button class="tab-btn" data-tab="carta" role="tab" aria-selected="false" aria-controls="carta">Carta Diaria</button>
+        <button class="tab-btn" data-tab="compartir" role="tab" aria-selected="false" aria-controls="compartir">Compartir</button>
+      </nav>
+      <!-- Guía -->
+      <section class="tab-content" id="guia" role="tabpanel" aria-labelledby="tab-guia">
+        <div class="guia-contenido">
+          <h2>🗺️ Guía para navegar este proyecto</h2>
+          <ol>
+            <li><strong>Bienvenida:</strong> Al entrar, verás una ventana creativa. Haz clic en “¡Empezar!” para comenzar.</li>
+            <li><strong>Pestañas:</strong> Usa los botones de la parte superior para cambiar entre Disculpa, Carta, Compartir y Guía.</li>
+            <li><strong>Disculpa:</strong> Lee el mensaje principal y acepta la disculpa si lo deseas.</li>
+            <li><strong>Carta:</strong> Lee una carta sincera y especial.</li>
+            <li><strong>Compartir:</strong> Puedes compartir la experiencia por WhatsApp y dejar tu respuesta.</li>
+            <li><strong>Botón Sorpresa:</strong> Haz clic para ver propuestas divertidas en una ventana flotante.</li>
+            <li><strong>Modo Dia/Noche:</strong> Usa el botón 🌙❤️ para cambiar el ambiente de la página.</li>
+            <li><strong>Accesibilidad:</strong> Todo es navegable con teclado y compatible con lectores de pantalla.</li>
+          </ol>
+          <p>¡Explora cada sección y descubre las sorpresas! 😊</p>
+        </div>
+      </section>
+
+      <!-- Disculpa -->
+      <section class="tab-content active" id="disculpa" role="tabpanel" aria-labelledby="tab-disculpa">
+        <p id="mensaje">Sé que soy un pendejo, cometo muchos errores, soy muy inmaduro, lo sé, pero quiero pedirte perdón de corazón. Me importas mucho y no quiero perder la oportunidad de seguir compartiendo momentos contigo.</p>
+        <div id="fraseRomantica" class="frase-romantica"></div>
+        <div id="estrellas" class="estrellas"></div>
+        <div id="diasJuntos" class="dias-juntos"></div>
+        <button id="perdonarBtn" class="big-btn" aria-label="Te perdono, enviar confetti">Te perdono 💌</button>
+        <div id="respuesta" class="oculto"></div>
+        <!-- Botón sorpresa movido aquí -->
+      </section>
+
+      <!-- Carta -->
+      <section class="tab-content" id="carta" role="tabpanel" aria-labelledby="tab-carta">
+        <div class="carta-amor">
+          <h2>💌 Una carta especial para ti</h2>
+          <div class="carta-contenido">
+            <p>Hola,</p>
+            <p>Cada día que te conozco un poco más, me doy cuenta de lo afortunado que soy de tenerte cerca. Tu sonrisa ilumina mis días más oscuros y tu risa es la melodía más hermosa que he escuchado.</p>
+            <p>Sé que he cometido errores, pero mi cariño por ti es sincero y profundo. Eres mi inspiración, mi paz, y la razón por la que quiero ser mejor cada día.</p>
+            <p>Prometo esforzarme para hacerte sonreír, cuidarte y respetarte siempre. Porque tú mereces todo lo bueno del mundo.</p>
+            <p>Con mucho cariño,<br>
+            Alguien que te piensa y te aprecia mucho ❤️</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Compartir -->
+      <section class="tab-content" id="compartir" role="tabpanel" aria-labelledby="tab-compartir">
+        <div class="share-controls">
+          <a id="whatsappBtn" href="#" target="_blank" class="whatsapp-btn" role="button" aria-label="Compartir por WhatsApp">Compartir por WhatsApp</a>
+        </div>
+      </section>
+    </div>
+
+    <div id="confetti-container" aria-hidden="true"></div>
+    <button id="modoRomanticoBtn" class="modo-romantico-btn" aria-label="Activar modo romántico">
+      <span id="iconoModo">🌙</span> <span class="corazon-emoji">❤️</span>
+    </button>
+    <script src="script.js"></script>
+  </body>
+</html>
