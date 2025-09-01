@@ -611,7 +611,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.querySelector('.sorpresa-contenido').innerHTML = `
           <div style="font-size:2.5rem; margin-bottom:0.7rem;">💖</div>
           <h3>Veredicto del jurado</h3>
-          <p>¿Perdonas al acusado de quererte tanto?</p>
+          <p>¿Perdonas al acusado por ser tan pende...?</p>
           <button id="perdonarSiBtn" class="big-btn abrazo-btn" style="margin:1rem 0.5rem 0 0;">Sí, lo absuelvo 🤝</button>
           <button id="perdonarNoBtn" class="big-btn abrazo-btn" style="margin:1rem 0 0 0;">No, aún no</button>
         `;
