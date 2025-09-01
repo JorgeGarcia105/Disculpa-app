@@ -74,14 +74,20 @@ function lanzarConfetti() {
   }
 }
 
-// Botón de perdón
-document.getElementById('perdonarBtn').addEventListener('click', function() {
-  const respuesta = document.getElementById('respuesta');
-  respuesta.textContent = '¡Gracias por darme otra oportunidad! Prometo esforzarme para hacerte sonreír siempre. 😊';
-  respuesta.classList.remove('oculto');
-  this.style.display = 'none';
-  lanzarConfetti();
-});
+
+
+function lanzarCorazones() {
+  const container = document.body;
+  for (let i = 0; i < 18; i++) {
+    const heart = document.createElement('span');
+    heart.textContent = '💖';
+    heart.className = 'corazon-flotante';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDelay = (Math.random() * 1.5) + 's';
+    container.appendChild(heart);
+    setTimeout(() => { if (container.contains(heart)) container.removeChild(heart); }, 2500);
+  }
+}
 
 // WhatsApp compartir (texto neutro y editable)
 document.getElementById('whatsappBtn').addEventListener('click', function(e) {
@@ -93,23 +99,6 @@ document.getElementById('whatsappBtn').addEventListener('click', function(e) {
   const url = 'https://wa.me/?text=' + mensaje;
   window.open(url, '_blank');
 });
-
-// Eliminado todo el soporte de música y audio para evitar errores de CORS
-// Música de fondo local (music.mp3 en la carpeta del proyecto)
-document.addEventListener('DOMContentLoaded', function() {
-  // Si quieres música, descomenta y pon tu archivo local o un enlace válido con CORS
-  // const audio = document.createElement('audio');
-  // audio.src = 'music/music.mp3';
-  // audio.loop = true;
-  // audio.volume = 0.25;
-  // audio.id = 'bg-music';
-  // document.body.appendChild(audio);
-  // setTimeout(() => {
-  //   audio.play().catch(() => {/* Autoplay bloqueado, se puede agregar un botón si se desea */});
-  // }, 500);
-});
-
-
 
 // Funcionalidad de pestañas
 const tabBtns = document.querySelectorAll('.tab-btn');
@@ -255,7 +244,6 @@ document.addEventListener('DOMContentLoaded', function() {
           });
         });
       }
-      lanzarConfetti();
     });
   }
 });
@@ -410,30 +398,317 @@ function mostrarCuestionarioEstrellas() {
   };
 }
 
-// Cartas diarias automáticas (7 días de la semana)
-const cartasDiarias = [
-  `¡Feliz lunes! Que esta semana empiece con mucha energía y sonrisas. Recuerda que siempre puedes contar conmigo. 💪😊`,
-  `Martes de nuevos retos y oportunidades. Gracias por estar en mi vida y hacerla más especial. 🌱✨`,
-  `Mitad de semana, miércoles. ¡Ánimo! Eres increíble y cada día lo demuestras más. 🌟`,
-  `Jueves: ya casi es viernes. Gracias por tu paciencia y por cada momento compartido. ¡Te aprecio mucho! 💖`,
-  `¡Por fin viernes! Espero que tu día esté lleno de alegría y buenas noticias. Disfruta mucho. 🎉`,
-  `Sábado de descanso y aventuras. Ojalá podamos compartir más momentos juntos. ¡Feliz día! 🥳`,
-  `Domingo: un día para recargar energías y soñar en grande. Gracias por ser tú. 🌈`
+// Temas extra (asegúrate de tener el botón con id="temaExtraBtn" en tu HTML)
+const temas = [
+  '', // Default
+  'tema-azul',
+  'tema-verde',
+  'tema-rosado'
 ];
+let temaActual = 0;
 
-// Función para mostrar la carta del día según el día de la semana
+const temaBtn = document.getElementById('temaExtraBtn');
+if (temaBtn) {
+  temaBtn.addEventListener('click', function() {
+    // Quita solo la clase de tema anterior, sin tocar 'romantico'
+    if (temas[temaActual]) document.body.classList.remove(temas[temaActual]);
+    temaActual = (temaActual + 1) % temas.length;
+    if (temas[temaActual]) document.body.classList.add(temas[temaActual]);
+  });
+}
+
+// Efecto de máquina de escribir en ambas líneas de la carta diaria, más lento y en orden
 function mostrarCartaDelDia() {
   const cartaContenedor = document.querySelector('#carta .carta-contenido');
   if (!cartaContenedor) return;
   const hoy = new Date();
   const diaSemana = hoy.getDay(); // 0=domingo, 1=lunes, ..., 6=sábado
+  const cartasDiarias = [
+    "¡Feliz lunes! Que tu semana esté llena de sonrisas. 💖",
+    "Martes de nuevas oportunidades. ¡Gracias por estar en mi vida! 🌱",
+    "Mitad de semana, miércoles. ¡Ánimo, eres increíble! 🌟",
+    "Jueves: ya casi es viernes. ¡Te aprecio mucho! 💖",
+    "¡Por fin viernes! Disfruta cada momento. 🎉",
+    "Sábado de aventuras y descanso. ¡Feliz día! 🥳",
+    "Domingo: recarga energías y sueña en grande. 🌈"
+  ];
   const indice = diaSemana === 0 ? 6 : diaSemana - 1;
+  const texto = cartasDiarias[indice];
+
   cartaContenedor.innerHTML = `
     <div class="carta-dia animar-pop">
       <div class="carta-emoji animar-corazon">💌</div>
-      <div class="carta-texto">${cartasDiarias[indice].replace(/\n/g, '<br>')}</div>
+      <div class="carta-texto">${texto}</div>
     </div>
   `;
 }
 
 document.addEventListener('DOMContentLoaded', mostrarCartaDelDia);
+
+const poemasBienvenida = [
+  "El Derecho me enseñó a argumentar, pero tú me enseñaste a sentir.",
+  "Si pudiera apelar a tu corazón, lo haría todos los días.",
+  "Entre leyes y códigos, tu sonrisa es mi mejor jurisprudencia.",
+  "No hay sentencia más dulce que tu perdón.",
+  "Mi mejor defensa: amarte sin reservas.",
+  "En el tribunal de la vida, tú eres mi veredicto favorito.",
+  "Que la justicia de tu cariño me absuelva siempre."
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+  const bienvenida = document.getElementById("bienvenida");
+  const empezarBtn = document.getElementById("empezarBtn");
+  const bienvenidaTexto = document.getElementById("bienvenidaTexto");
+  if (bienvenida && empezarBtn) {
+    document.body.classList.add("modal-abierto");
+    empezarBtn.focus();
+    empezarBtn.addEventListener("click", () => {
+      bienvenida.style.display = "none";
+      document.body.classList.remove("modal-abierto");
+      // Enfoca la primera pestaña accesible
+      const firstTab = document.querySelector(".tab-btn");
+      if (firstTab) firstTab.focus();
+    });
+    // Accesibilidad: cerrar con Enter o barra espaciadora
+    empezarBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        empezarBtn.click();
+      }
+    });
+  }
+  if (bienvenidaTexto) {
+    const poema = poemasBienvenida[Math.floor(Math.random() * poemasBienvenida.length)];
+    bienvenidaTexto.innerHTML += `<br><em style="display:block;margin-top:1.2rem;color:#e75480;">"${poema}"</em>`;
+  }
+});
+
+const mensajesBienvenida = [
+  "Hoy es un gran día para empezar de nuevo.",
+  "Cada día es una nueva oportunidad para sonreír juntos.",
+  "Gracias por estar aquí, hoy y siempre.",
+  "Que este día esté lleno de alegría y amor.",
+  "Hoy puede ser el mejor día de todos, si tú quieres.",
+  "¡Bienvenida a un día más de cariño y sorpresas!",
+  "Hoy, como siempre, eres mi mejor argumento."
+];
+document.addEventListener("DOMContentLoaded", () => {
+  const bienvenidaTexto = document.getElementById("bienvenidaTexto");
+  if (bienvenidaTexto) {
+    const hoy = new Date();
+    const dia = hoy.getDay();
+    bienvenidaTexto.innerHTML = mensajesBienvenida[dia] + bienvenidaTexto.innerHTML;
+  }
+});
+
+// Arreglar el botón de "Abrazar" para que funcione correctamente y no cause bugs
+document.addEventListener('DOMContentLoaded', function() {
+  const abrazarBtn = document.getElementById('abrazarBtn');
+  if (abrazarBtn) {
+    abrazarBtn.addEventListener('click', function() {
+      if (document.querySelector('.sorpresa-modal')) return;
+      let modal = document.createElement('div');
+      modal.className = 'sorpresa-modal';
+      modal.innerHTML = `
+        <div class="sorpresa-contenido animar-pop" style="text-align:center;">
+          <div style="font-size:3rem; margin-bottom:0.7rem; animation: abrazo-emoji 1.2s infinite alternate;">🤗💞</div>
+          <h3 style="margin-bottom:0.5rem;">¡Abrazo virtual enviado!</h3>
+          <p style="font-size:1.1rem;">Aunque no pueda abrazarte en persona, te mando todo mi cariño y energía positiva.<br>¡Espero que lo sientas! 💖</p>
+          <button id="cerrarAbrazoBtn" class="big-btn abrazo-btn" style="margin-top:1.2rem;">Cerrar</button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      document.body.classList.add("modal-abierto");
+      document.getElementById('cerrarAbrazoBtn').onclick = function() {
+        modal.remove();
+        document.body.classList.remove("modal-abierto");
+      };
+      modal.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          modal.remove();
+          document.body.classList.remove("modal-abierto");
+        }
+      });
+      document.getElementById('cerrarAbrazoBtn').focus();
+    });
+  }
+});
+
+// Juicio creativo para amigos que se gustan, y el botón sorpresa solo aparece al ser declarado inocente
+document.addEventListener('DOMContentLoaded', function() {
+  const perdonarBtn = document.getElementById('perdonarBtn');
+  const respuesta = document.getElementById('respuesta');
+
+  if (perdonarBtn && respuesta) {
+    perdonarBtn.addEventListener('click', function() {
+      // Mostrar el "Juicio especial" antes de perdonar
+      if (document.querySelector('.sorpresa-modal')) return;
+      let modal = document.createElement('div');
+      modal.className = 'sorpresa-modal';
+      modal.innerHTML = `
+        <div class="sorpresa-contenido animar-pop" style="text-align:center;">
+          <div style="font-size:2.2rem; margin-bottom:0.7rem; animation: abrazo-emoji 1.2s infinite alternate;">⚖️💖</div>
+          <h3 style="margin-bottom:0.5rem;">Juicio ante el Tribunal de las Miradas</h3>
+          <p>
+            El acusado se presenta ante el jurado de las sonrisas y declara:<br>
+            <em>
+              "Admito que a veces cometo errores, pero cada día me esfuerzo por ser mejor, porque tú inspiras lo mejor de mí.<br>
+              Si el cariño fuera delito, acepto mi condena con gusto."<br>
+            </em>
+          </p>
+          <button id="defensaBtn" class="big-btn abrazo-btn" style="margin:1rem 0.5rem 0 0;">Escuchar defensa</button>
+          <button id="veredictoBtn" class="big-btn abrazo-btn" style="margin:1rem 0 0 0;">Ir directo al veredicto</button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      document.body.classList.add("modal-abierto");
+
+      document.getElementById('defensaBtn').onclick = function() {
+        this.parentNode.innerHTML = `
+          <div style="font-size:2.2rem; margin-bottom:0.7rem;">📚💌</div>
+          <h3>Defensa apasionada</h3>
+          <p>
+            La defensa presenta como pruebas:<br>
+            - Mensajes inesperados<br>
+            - Risas compartidas<br>
+            - Miradas que dicen más que mil palabras<br>
+            - Y el deseo de crear recuerdos juntos<br>
+            <br>
+            ¿El jurado está listo para emitir su veredicto?
+          </p>
+          <button id="aceptarVeredictoBtn" class="big-btn abrazo-btn" style="margin-top:1.2rem;">Emitir veredicto</button>
+        `;
+        document.getElementById('aceptarVeredictoBtn').onclick = function() {
+          mostrarOpcionesPerdon();
+        };
+      };
+
+      document.getElementById('veredictoBtn').onclick = function() {
+        mostrarOpcionesPerdon();
+      };
+
+      function mostrarOpcionesPerdon() {
+        modal.querySelector('.sorpresa-contenido').innerHTML = `
+          <div style="font-size:2.5rem; margin-bottom:0.7rem;">💖</div>
+          <h3>Veredicto del jurado</h3>
+          <p>¿Perdonas al acusado de quererte tanto?</p>
+          <button id="perdonarSiBtn" class="big-btn abrazo-btn" style="margin:1rem 0.5rem 0 0;">Sí, lo absuelvo 🤝</button>
+          <button id="perdonarNoBtn" class="big-btn abrazo-btn" style="margin:1rem 0 0 0;">No, aún no</button>
+        `;
+        document.getElementById('perdonarSiBtn').onclick = function() {
+          playSonido('perdon');
+          mostrarVeredictoFinal(true);
+        };
+        document.getElementById('perdonarNoBtn').onclick = function() {
+          playSonido('confetti');
+          mostrarVeredictoFinal(false);
+        };
+      }
+
+      function mostrarVeredictoFinal(perdonado) {
+        if (perdonado) {
+          modal.querySelector('.sorpresa-contenido').innerHTML = `
+            <div style="font-size:2.5rem; margin-bottom:0.7rem;">🎉💖</div>
+            <h3>¡Inocente y con futuro prometedor!</h3>
+            <p>
+              El tribunal declara:<br>
+              <strong>¡Absuelto de todo cargo y merecedor de nuevas aventuras juntos!</strong><br>
+              <br>
+              ¿Lista para descubrir la sorpresa?
+            </p>
+            <button id="cerrarJuicioBtn" class="big-btn abrazo-btn" style="margin-top:1.2rem;">Ver sorpresa 🎁</button>
+          `;
+          document.getElementById('cerrarJuicioBtn').onclick = function() {
+            modal.remove();
+            document.body.classList.remove("modal-abierto");
+            if (typeof lanzarConfetti === "function") lanzarConfetti();
+            if (typeof lanzarCorazones === "function") lanzarCorazones();
+            if (typeof playSonido === "function") playSonido('perdon'); // <-- SONIDO AQUÍ
+            respuesta.textContent = '¡Gracias por darme otra oportunidad! Prometo que lo nuestro será cada vez más especial. 😊';
+            respuesta.classList.remove('oculto');
+            perdonarBtn.style.display = 'none';
+
+            // Crear y mostrar el botón de sorpresa si no existe
+            if (!document.getElementById('surpriseBtn')) {
+              const surpriseBtn = document.createElement('button');
+              surpriseBtn.id = 'surpriseBtn';
+              surpriseBtn.className = 'surprise-btn';
+              surpriseBtn.setAttribute('aria-label', 'Sorpresa divertida');
+              surpriseBtn.textContent = '🎁 Sorpresa';
+              surpriseBtn.style.display = 'block';
+              surpriseBtn.style.margin = '1.5rem auto 0 auto';
+              surpriseBtn.style.textAlign = 'center';
+              respuesta.parentNode.appendChild(surpriseBtn);
+
+              surpriseBtn.addEventListener('click', function() {
+                mostrarSorpresaHelado(function() {
+                  surpriseBtn.remove();
+                  mostrarCuestionarioEstrellas();
+                });
+              });
+            }
+          };
+        } else {
+          modal.querySelector('.sorpresa-contenido').innerHTML = `
+            <div style="font-size:2.5rem; margin-bottom:0.7rem;">😢</div>
+            <h3>Veredicto final</h3>
+            <p>
+              El tribunal de los amigos que se gustan declara:<br>
+              <strong>¡Culpable de pensar mucho en ti!</strong><br>
+              <br>
+              Entiendo tu decisión y seguiré esforzándome para ganarme tu confianza (y tu sonrisa). 💔
+            </p>
+            <button id="cerrarJuicioBtn" class="big-btn abrazo-btn" style="margin-top:1.2rem;">Cerrar</button>
+          `;
+          document.getElementById('cerrarJuicioBtn').onclick = function() {
+            modal.remove();
+            document.body.classList.remove("modal-abierto");
+            respuesta.textContent = 'Gracias por escuchar mi defensa. Seguiré luchando por tu confianza y por más momentos juntos. 💔';
+            respuesta.classList.remove('oculto');
+            perdonarBtn.style.display = 'none';
+          };
+        }
+      }
+    });
+  }
+});
+
+// Mejorar botón piropo
+const piropos = [
+  "Si la belleza fuera tiempo, tú serías la eternidad.",
+  "¿Sabías que tienes el superpoder de alegrar mi día con una sonrisa?",
+  "No eres Google, pero tienes todo lo que busco.",
+  "Si fueras estrella, no habría noche oscura.",
+  "Eres la casualidad más bonita que me pasó.",
+  "Tu risa es mi melodía favorita.",
+  "Si existiera un concurso de sonrisas, la tuya ganaría siempre.",
+  "Contigo, cualquier día es especial.",
+  "Tus ojos tienen la chispa que enciende mi mejor versión.",
+  "Si los piropos fueran estrellas, contigo tendría un universo."
+];
+const piropoBtn = document.getElementById('piropoBtn');
+if (piropoBtn) {
+  piropoBtn.innerHTML = '💬 Enviar piropo';
+  piropoBtn.addEventListener('click', function() {
+    let modal = document.createElement('div');
+    modal.className = 'sorpresa-modal';
+    modal.innerHTML = `
+      <div class="sorpresa-contenido animar-pop" style="text-align:center;">
+        <div style="font-size:2.2rem; margin-bottom:0.7rem;">💬✨</div>
+        <h3>Piropo para ti</h3>
+        <p style="font-size:1.2rem; margin-bottom:1rem;">${piropos[Math.floor(Math.random() * piropos.length)]}</p>
+        <button class="big-btn abrazo-btn" onclick="this.closest('.sorpresa-modal').remove();document.body.classList.remove('modal-abierto')" style="margin-top:1.2rem;">Cerrar</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    document.body.classList.add("modal-abierto");
+  });
+}
+
+function playSonido(tipo) {
+  let audio = document.createElement('audio');
+  if (tipo === 'perdon') audio.src = 'music/perdon.mp3';
+  if (tipo === 'confetti') audio.src = 'music/confetti.mp3';
+  audio.volume = 0.25;
+  audio.play();
+  setTimeout(() => audio.remove(), 2000);
+}

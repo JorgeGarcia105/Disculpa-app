@@ -33,6 +33,7 @@
         <button class="tab-btn active" data-tab="disculpa" role="tab" aria-selected="true" aria-controls="disculpa">Disculpa</button>
         <button class="tab-btn" data-tab="carta" role="tab" aria-selected="false" aria-controls="carta">Carta Diaria</button>
         <button class="tab-btn" data-tab="compartir" role="tab" aria-selected="false" aria-controls="compartir">Compartir</button>
+        <button class="tab-btn" data-tab="promesas" role="tab" aria-selected="false" aria-controls="promesas">Promesas</button>
       </nav>
       <!-- Guía -->
       <section class="tab-content" id="guia" role="tabpanel" aria-labelledby="tab-guia">
@@ -58,9 +59,16 @@
         <div id="fraseRomantica" class="frase-romantica"></div>
         <div id="estrellas" class="estrellas"></div>
         <div id="diasJuntos" class="dias-juntos"></div>
-        <button id="perdonarBtn" class="big-btn" aria-label="Te perdono, enviar confetti">Te perdono 💌</button>
+        <button id="perdonarBtn" class="big-btn" aria-label="Iniciar juicio" style="margin-top:1.2rem;">Iniciar juicio ⚖️💌</button>
         <div id="respuesta" class="oculto"></div>
-        <!-- Botón sorpresa movido aquí -->
+        <!-- Botón abrazo -->
+        <div style="text-align:center; margin-top:1.2rem;">
+          <button id="abrazarBtn" class="big-btn abrazo-btn" aria-label="Enviar abrazo virtual">
+            🤗 Enviar abrazo virtual
+          </button>
+        </div>
+        <button id="piropoBtn" class="piropo-btn" aria-label="Enviar piropo">💬 Enviar piropo</button>
+        <!-- <button id="juicioBtn" class="big-btn" style="margin-top:1.2rem;">Juicio  ⚖️</button> -->
       </section>
 
       <!-- Carta -->
@@ -75,6 +83,7 @@
             <p>Con mucho cariño,<br>
             Alguien que te piensa y te aprecia mucho ❤️</p>
           </div>
+          <!-- En la guía o carta -->
         </div>
       </section>
 
@@ -84,9 +93,21 @@
           <a id="whatsappBtn" href="#" target="_blank" class="whatsapp-btn" role="button" aria-label="Compartir por WhatsApp">Compartir por WhatsApp</a>
         </div>
       </section>
+
+      <!-- Promesas -->
+      <section class="tab-content" id="promesas" role="tabpanel" aria-labelledby="tab-promesas">
+        <div class="promesas">
+          <h2>🤞 Promesas para ti</h2>
+          <textarea id="promesasInput" placeholder="Escribe aquí tus promesas..."></textarea>
+          <button id="guardarPromesasBtn" class="big-btn">Guardar</button>
+          <div id="promesasGuardadas"></div>
+        </div>
+      </section>
     </div>
 
     <div id="confetti-container" aria-hidden="true"></div>
+    <!-- Agrega este botón cerca del de modo romántico -->
+    <button id="temaExtraBtn" class="modo-romantico-btn" aria-label="Cambiar tema" style="right:4.5rem;position:fixed;bottom:1.5rem;">🎨</button>
     <button id="modoRomanticoBtn" class="modo-romantico-btn" aria-label="Activar modo romántico">
       <span id="iconoModo">🌙</span> <span class="corazon-emoji">❤️</span>
     </button>
