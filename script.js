@@ -424,23 +424,44 @@ function mostrarCartaDelDia() {
   const hoy = new Date();
   const diaSemana = hoy.getDay(); // 0=domingo, 1=lunes, ..., 6=sábado
   const cartasDiarias = [
-    "¡Feliz lunes! Que tu semana esté llena de sonrisas. 💖",
-    "Martes de nuevas oportunidades. ¡Gracias por estar en mi vida! 🌱",
-    "Mitad de semana, miércoles. ¡Ánimo, eres increíble! 🌟",
-    "Jueves: ya casi es viernes. ¡Te aprecio mucho! 💖",
-    "¡Por fin viernes! Disfruta cada momento. 🎉",
-    "Sábado de aventuras y descanso. ¡Feliz día! 🥳",
-    "Domingo: recarga energías y sueña en grande. 🌈"
+    `¡Feliz lunes! Que esta semana empiece con mucha energía y sonrisas.\nRecuerda que siempre puedes contar conmigo. 💪😊`,
+    `Martes de nuevos retos y oportunidades.\nGracias por estar en mi vida y hacerla más especial. 🌱✨`,
+    `Mitad de semana, miércoles. ¡Ánimo!\nEres increíble y cada día lo demuestras más. 🌟`,
+    `Jueves: ya casi es viernes.\nGracias por tu paciencia y por cada momento compartido. ¡Te aprecio mucho! 💖`,
+    `¡Por fin viernes! Espero que tu día esté lleno de alegría y buenas noticias.\nDisfruta mucho. 🎉`,
+    `Sábado de descanso y aventuras.\nOjalá podamos compartir más momentos juntos. ¡Feliz día! 🥳`,
+    `Domingo: un día para recargar energías y soñar en grande.\nGracias por ser tú. 🌈`
   ];
   const indice = diaSemana === 0 ? 6 : diaSemana - 1;
   const texto = cartasDiarias[indice];
+  const partes = texto.split('\n');
+  const primeraLinea = partes[0];
+  const segundaLinea = partes[1] || '';
 
   cartaContenedor.innerHTML = `
     <div class="carta-dia animar-pop">
       <div class="carta-emoji animar-corazon">💌</div>
-      <div class="carta-texto">${texto}</div>
+      <div class="carta-texto">
+        <span class="carta-typing"></span>
+        <span class="carta-resto" style="display:none;"></span>
+      </div>
     </div>
   `;
+
+  const typingDiv = cartaContenedor.querySelector('.carta-typing');
+  const restoDiv = cartaContenedor.querySelector('.carta-resto');
+  let i = 0;
+  function escribirPrimera() {
+    typingDiv.textContent = primeraLinea.slice(0, i);
+    i++;
+    if (i <= primeraLinea.length) {
+      setTimeout(escribirPrimera, 55);
+    } else {
+      restoDiv.textContent = segundaLinea;
+      restoDiv.style.display = 'block';
+    }
+  }
+  escribirPrimera();
 }
 
 document.addEventListener('DOMContentLoaded', mostrarCartaDelDia);
@@ -652,7 +673,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div style="font-size:2.5rem; margin-bottom:0.7rem;">😢</div>
             <h3>Veredicto final</h3>
             <p>
-              El tribunal de los amigos que se gustan declara:<br>
+              El tribunal declara:<br>
               <strong>¡Culpable de pensar mucho en ti!</strong><br>
               <br>
               Entiendo tu decisión y seguiré esforzándome para ganarme tu confianza (y tu sonrisa). 💔

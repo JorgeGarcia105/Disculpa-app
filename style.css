@@ -823,23 +823,40 @@ body.modal-abierto .bienvenida-modal {
   color: #e75480;
   font-weight: 500;
   margin-top: 0.5rem;
+  white-space: pre-line;      /* Permite saltos de línea */
+  word-break: break-word;
+  overflow: visible;          /* Permite mostrar todo el texto */
+  border-right: none;         /* Quita el cursor de máquina de escribir */
+  animation: none;            /* Quita la animación de typing */
+  width: 100%;
+  display: block;
+  line-height: 1.5;
+}
+
+/* Si usas .carta-typing para la primera línea con efecto, y .carta-resto para el resto: */
+.carta-typing {
   overflow: hidden;
   white-space: nowrap;
   border-right: 2px solid #e75480;
   animation: typing 2.5s steps(60, end), blink-caret 0.75s step-end infinite;
-  width: 100%;
   display: inline-block;
+  font-size: 1.15rem;
+  color: #e75480;
+  font-weight: 500;
+}
+.carta-resto {
+  display: block;
+  font-size: 1.15rem;
+  color: #e75480;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  white-space: pre-line;
+  border-right: none;
+  animation: none;
+  line-height: 1.5;
 }
 
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: #e75480; }
-}
+/* ...existing code... */
 .romantico .carta-texto {
   color: #ffb6c1;
 }
